@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Row, Col } from 'antd';
 const FormItem = Form.Item;
+const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 class NormalLoginForm extends Component {
     handleSubmit = (e) => {
@@ -19,14 +20,20 @@ class NormalLoginForm extends Component {
                     <Form onSubmit={this.handleSubmit} className="login-form">
                         <FormItem>
                             {getFieldDecorator('email', {
-                                rules: [{}],
+                                rules: [{
+                                    required: true, message: 'Please input your email!',
+                                    pattern: emailRegExp, message: 'Email invalid!'
+                                }],
                             })(
                                 <Input prefix={<Icon type="user" style={{ color: '#033F38' }} />} placeholder="Email" />
                             )}
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('password', {
-                                rules: [{}],
+                                rules: [{
+                                    required: true, message: 'Please input your Password!',
+                                    min: 4, message: 'Password should contain at least 4 charts'
+                                }],
                             })(
                                 <Input prefix={<Icon type="lock" style={{ color: '#033F38' }} />} type="password" placeholder="Password" />
                             )}
