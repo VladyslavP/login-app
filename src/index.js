@@ -1,8 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './LoginApp';
-import registerServiceWorker from './registerServiceWorker';
+import {Provider} from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import configureStore from './store';
+import './index.css';
+import LoginApp from './LoginApp';
+import * as sagas from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore();
+
+sagaMiddleware.run(sagas.login);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <LoginApp/>
+    </Provider>,
+    document.getElementById('root')
+);
