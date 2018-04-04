@@ -1,3 +1,7 @@
 export const LOGIN_REQUEST = '@@loginApp/LOGIN_REQUEST';
 export const LOGIN_REQUEST_SUCCESS = '@@loginApp/LOGIN_REQUEST_SUCCESS';
 export const LOGIN_REQUEST_ERROR = '@@loginApp/LOGIN_REQUEST_ERROR';
+
+export const USER_AUTHENTICATED = '@@loginApp/USER_AUTHENTICATED';
+
+export const SUCCESS_CLEAN_ERROR = '@loginApp/SUCCESS_CLEAN_ERROR';

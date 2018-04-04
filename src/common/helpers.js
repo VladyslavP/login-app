@@ -3,7 +3,11 @@ export function getAuthToken() {
 }
 
 export function setAuthToken(token) {
-    localStorage.setItem('AccessToken', JSON.stringify(token));
+    localStorage.setItem('AccessToken', token);
+}
+
+export function removeAuthToken() {
+    localStorage.removeItem('AccessToken');
 }
 
 export function actionCreator(type, payload) {

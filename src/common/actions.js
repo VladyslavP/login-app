@@ -10,7 +10,22 @@ export function getDataAction(url, authHeader = true) {
                     'Accept': "application/json",
                     'Content-Type': "application/json"
                 });
+    return fetch(url, { method: 'GET', headers });
+}
 
-    return fetch(url, { method: 'GET', headers })
-        .then(response => response.json());
+export function postDataAction(url, body) {
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: new Headers({
+            'Accept': "application/json",
+            'Content-Type': "application/json"
+        })
+    })
+        .then(response => {
+            if (response.status === 201) {
+                return Promise.resolve(response.json());
+            }
+            return Promise.reject(response);
+        });
 }
